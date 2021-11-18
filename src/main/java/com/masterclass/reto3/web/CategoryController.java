@@ -45,7 +45,7 @@ public class CategoryController {
         return categoryService.save(p);
     }
     // Mastertech envios por POST
-    @PostMapping("/save")
+    @PostMapping("/all")
     @ResponseStatus(HttpStatus.CREATED)
     public Category saveRequest(@RequestBody Category p){
         return categoryService.save(p);
