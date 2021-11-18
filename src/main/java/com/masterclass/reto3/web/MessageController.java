@@ -45,6 +45,12 @@ public class MessageController {
         return messageService.save(p);
     }
     
+    @PostMapping("/all")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Message saveRequest(@RequestBody Message p){
+        return messageService.save(p);
+    }
+    
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     public void delete(@PathVariable("id") int id){

@@ -45,6 +45,12 @@ public class ClientController {
         return clientService.save(p);
     }
     
+    @PostMapping("/all")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Client saveRequest(@RequestBody Client p){
+        return clientService.save(p);
+    }
+    
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     public void delete(@PathVariable("id") int id){

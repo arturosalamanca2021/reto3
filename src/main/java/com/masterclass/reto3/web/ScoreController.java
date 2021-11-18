@@ -43,4 +43,10 @@ public class ScoreController {
     public Score save(@RequestBody Score p){
         return categoriaService.save(p);
     }
+    
+    @PostMapping("/all")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Score saveRequest(@RequestBody Score p){
+        return categoriaService.save(p);
+    }
 }

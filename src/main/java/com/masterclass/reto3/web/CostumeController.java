@@ -45,6 +45,12 @@ public class CostumeController {
         return costumeService.save(p);
     }
     
+    @PostMapping("/all")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Costume saveRequest(@RequestBody Costume p){
+        return costumeService.save(p);
+    }
+    
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     public void delete(@PathVariable("id") int id){

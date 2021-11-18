@@ -45,6 +45,12 @@ public class AdminController {
         return adminService.save(a);
     }
     
+    @PostMapping("/all")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Admin saveRequest(@RequestBody Admin a){
+        return adminService.save(a);
+    }
+    
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     public void delete(@PathVariable("id") int id){
