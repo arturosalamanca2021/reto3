@@ -24,8 +24,8 @@ public class Costume implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String brand; 
     private String name;
+    private String brand; 
     private int year;
     private String description;
 
@@ -35,11 +35,11 @@ public class Costume implements Serializable{
     private Category category;
     
     @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "costume")
-    @JsonIgnoreProperties("costume")
+    @JsonIgnoreProperties({"costume", "client"})
     private List<Message> messages;
     
     @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "costume")
-    @JsonIgnoreProperties("costume")
+    @JsonIgnoreProperties({"costume", "client"})
     private List<Reservation> reservations;
 
     public List<Message> getMessages() {

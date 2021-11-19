@@ -24,9 +24,9 @@ public class Client implements Serializable{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int idClient;
-    private String name;
     private String email;
     private String password;
+    private String name;
     private int age;
 
     @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "client")
