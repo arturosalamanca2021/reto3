@@ -38,6 +38,10 @@ public class ReservationService {
         }
     }
     
+    public Reservation update(Reservation c){
+        return reservationRepository.save(c);
+    }
+    
     public void delete(int id){
         reservationRepository.delete(id);
     }

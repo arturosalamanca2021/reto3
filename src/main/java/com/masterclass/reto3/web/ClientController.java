@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import com.masterclass.reto3.model.Client;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 
 @RestController
 @RequestMapping("/api/Client")
@@ -55,5 +56,11 @@ public class ClientController {
     @ResponseStatus(HttpStatus.OK)
     public void delete(@PathVariable("id") int id){
         clientService.delete(id);
+    }
+    
+    @PutMapping("/update")
+    @ResponseStatus(HttpStatus.OK)
+    public Client update(@RequestBody Client p){
+        return clientService.update(p);
     }
 }

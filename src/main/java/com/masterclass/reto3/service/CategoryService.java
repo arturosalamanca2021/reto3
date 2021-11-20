@@ -38,6 +38,10 @@ public class CategoryService {
         }
     }
     
+    public Category update(Category c){
+        return categoryRepository.save(c);
+    }
+    
     public void delete(int id){
         categoryRepository.delete(id);
     }

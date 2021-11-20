@@ -38,6 +38,10 @@ public class MessageService {
         }
     }
     
+    public Message update(Message c){
+        return messageRepository.save(c);
+    }
+    
     public void delete(int id){
         messageRepository.delete(id);
     }

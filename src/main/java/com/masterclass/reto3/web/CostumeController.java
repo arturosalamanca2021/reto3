@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import com.masterclass.reto3.model.Costume;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 
 @RestController
 @RequestMapping("/api/Costume")
@@ -55,5 +56,11 @@ public class CostumeController {
     @ResponseStatus(HttpStatus.OK)
     public void delete(@PathVariable("id") int id){
         costumeService.delete(id);
+    }
+    
+    @PutMapping("/update")
+    @ResponseStatus(HttpStatus.OK)
+    public Costume update(@RequestBody Costume p){
+        return costumeService.update(p);
     }
 }

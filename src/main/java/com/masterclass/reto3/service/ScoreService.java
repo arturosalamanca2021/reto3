@@ -40,7 +40,13 @@ public class ScoreService {
         return c;
     }
     
+    public Score update(Score c){
+        return scoreRepository.save(c);
+    }
+    
     public void delete(int id){
         scoreRepository.delete(id);
     }
+    
+    
 }

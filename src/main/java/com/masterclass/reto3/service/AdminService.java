@@ -41,4 +41,8 @@ public class AdminService {
     public void delete(int id){
         adminRepository.delete(id);
     }
+    
+    public Admin update(Admin c){
+        return adminRepository.save(c);
+    }
 }

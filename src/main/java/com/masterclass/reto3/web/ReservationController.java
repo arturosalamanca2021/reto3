@@ -20,6 +20,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import com.masterclass.reto3.model.Reservation;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 
 @RestController
 @RequestMapping("/api/Reservation")
@@ -50,4 +52,17 @@ public class ReservationController {
     public Reservation saveRequest(@RequestBody Reservation p){
         return reservationService.save(p);
     }
+    
+    @PutMapping("/update")
+    @ResponseStatus(HttpStatus.OK)
+    public Reservation update(@RequestBody Reservation p){
+        return reservationService.update(p);
+    }
+    
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public void delete(@PathVariable("id") int id){
+        reservationService.delete(id);
+    }
+    
 }

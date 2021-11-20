@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import com.masterclass.reto3.model.Message;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 
 @RestController
 @RequestMapping("/api/Message")
@@ -57,4 +58,9 @@ public class MessageController {
         messageService.delete(id);
     }
     
+    @PutMapping("/update")
+    @ResponseStatus(HttpStatus.OK)
+    public Message update(@RequestBody Message p){
+        return messageService.update(p);
+    }
 }

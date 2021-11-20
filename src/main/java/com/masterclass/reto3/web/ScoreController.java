@@ -10,43 +10,48 @@ import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import com.masterclass.reto3.model.Score;
+import org.springframework.web.bind.annotation.PutMapping;
 
 @RestController
 @RequestMapping("/api/Score")
 @CrossOrigin(origins = "*", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE})
 public class ScoreController {
     @Autowired
-    private ScoreService categoriaService;
+    private ScoreService scoreService;
     
     @GetMapping("/all")
     public List<Score> getScores(){
-        return categoriaService.getAll();
+        return scoreService.getAll();
     }
     
     @GetMapping("/{id}")
     public Optional<Score> getScore(@PathVariable("id") int id){
-        return categoriaService.getScore(id);
+        return scoreService.getScore(id);
     }
     
     @PostMapping("/save")
     @ResponseStatus(HttpStatus.CREATED)
     public Score save(@RequestBody Score p){
-        return categoriaService.save(p);
+        return scoreService.save(p);
     }
     
     @PostMapping("/all")
     @ResponseStatus(HttpStatus.CREATED)
     public Score saveRequest(@RequestBody Score p){
-        return categoriaService.save(p);
+        return scoreService.save(p);
+    }
+    
+    @PutMapping("/update")
+    @ResponseStatus(HttpStatus.OK)
+    public Score update(@RequestBody Score p){
+        return scoreService.update(p);
+    }
+    
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public void delete(@PathVariable("id") int id){
+        scoreService.delete(id);
     }
 }

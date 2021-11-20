@@ -38,6 +38,12 @@ public class CostumeService {
         }
     }
     
+    public Costume update(Costume c){
+        Optional<Costume> caux = costumeRepository.getCostume(c.getId());
+        c.setCategory(caux.get().getCategory());
+        return costumeRepository.save(c);
+    }
+    
     public void delete(int id){
         costumeRepository.delete(id);
     }

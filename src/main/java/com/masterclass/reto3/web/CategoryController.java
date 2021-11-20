@@ -21,10 +21,11 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import com.masterclass.reto3.model.Category;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 
 @RestController
 @RequestMapping("/api/Category")
-@CrossOrigin(origins = "*", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE})
+@CrossOrigin(origins = "*", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE, RequestMethod.OPTIONS})
 public class CategoryController {
     @Autowired
     private CategoryService categoryService;
@@ -55,5 +56,11 @@ public class CategoryController {
     @ResponseStatus(HttpStatus.OK)
     public void delete(@PathVariable("id") int id){
         categoryService.delete(id);
+    }
+    
+    @PutMapping("/update")
+    @ResponseStatus(HttpStatus.OK)
+    public Category update(@RequestBody Category p){
+        return categoryService.update(p);
     }
 }
