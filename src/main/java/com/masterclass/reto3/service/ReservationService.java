@@ -17,14 +17,28 @@ public class ReservationService {
     @Autowired
     private ReservationRepository reservationRepository;
     
+    /**
+     * Obtener todos los registros de la tabla reservations
+     * @return 
+     */
     public List<Reservation> getAll(){
         return reservationRepository.getAll();
     }
     
+    /**
+     * obtener un registro de la tabla reservations filtrado por el campo Id
+     * @param id
+     * @return 
+     */
     public Optional<Reservation> getReservation(int id){
         return reservationRepository.getReservation(id);
     }
     
+    /**
+     * Permite almacenar el registro nuevo en la tabla reservations
+     * @param c
+     * @return 
+     */
     public Reservation save(Reservation c){
         if(c.getIdReservation() == 0){
             return reservationRepository.save(c);
@@ -38,10 +52,19 @@ public class ReservationService {
         }
     }
     
+    /**
+     * Actualiza un registro de la tabla reservations
+     * @param c
+     * @return 
+     */
     public Reservation update(Reservation c){
         return reservationRepository.save(c);
     }
     
+    /**
+     * Elimina un registro de la tabla reservation de acuerdo a su id
+     * @param id 
+     */
     public void delete(int id){
         reservationRepository.delete(id);
     }
