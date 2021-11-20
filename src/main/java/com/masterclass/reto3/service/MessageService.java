@@ -42,7 +42,12 @@ public class MessageService {
         return messageRepository.save(c);
     }
     
-    public void delete(int id){
-        messageRepository.delete(id);
+    public boolean delete(int id){
+        Optional<Message> c = getMessage(id);
+        if(!c.isEmpty()){
+            messageRepository.delete(id);
+            return true;
+        }
+        return false;
     }
 }

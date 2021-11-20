@@ -65,8 +65,13 @@ public class ReservationService {
      * Elimina un registro de la tabla reservation de acuerdo a su id
      * @param id 
      */
-    public void delete(int id){
-        reservationRepository.delete(id);
+   public boolean delete(int id){
+        Optional<Reservation> c = getReservation(id);
+        if(!c.isEmpty()){
+            reservationRepository.delete(id);
+            return true;
+        }
+        return false;
     }
     
 }

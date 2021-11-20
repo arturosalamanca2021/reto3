@@ -44,8 +44,13 @@ public class ScoreService {
         return scoreRepository.save(c);
     }
     
-    public void delete(int id){
-        scoreRepository.delete(id);
+    public boolean delete(int id){
+        Optional<Score> c = getScore(id);
+        if(!c.isEmpty()){
+            scoreRepository.delete(id);
+            return true;
+        }
+        return false;
     }
     
     

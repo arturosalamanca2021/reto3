@@ -42,8 +42,13 @@ public class ClientService {
         return clientRepository.save(c);
     }
     
-    public void delete(int id){
-        clientRepository.delete(id);
+    public boolean delete(int id){
+        Optional<Client> c = getClient(id);
+        if(!c.isEmpty()){
+            clientRepository.delete(id);
+            return true;
+        }
+        return false;
     }
     
 }

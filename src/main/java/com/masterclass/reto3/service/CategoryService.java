@@ -42,7 +42,12 @@ public class CategoryService {
         return categoryRepository.save(c);
     }
     
-    public void delete(int id){
-        categoryRepository.delete(id);
+    public boolean delete(int id){
+        Optional<Category> c = getCategory(id);
+        if(!c.isEmpty()){
+            categoryRepository.delete(id);
+            return true;
+        }
+        return false;
     }
 }

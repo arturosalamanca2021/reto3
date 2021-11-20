@@ -44,7 +44,12 @@ public class CostumeService {
         return costumeRepository.save(c);
     }
     
-    public void delete(int id){
-        costumeRepository.delete(id);
+    public boolean delete(int id){
+        Optional<Costume> c = getCostume(id);
+        if(!c.isEmpty()){
+            costumeRepository.delete(id);
+            return true;
+        }
+        return false;
     }
 }

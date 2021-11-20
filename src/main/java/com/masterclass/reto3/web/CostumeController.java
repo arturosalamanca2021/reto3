@@ -53,13 +53,13 @@ public class CostumeController {
     }
     
     @DeleteMapping("/{id}")
-    @ResponseStatus(HttpStatus.ACCEPTED)
-    public void delete(@PathVariable("id") int id){
-        costumeService.delete(id);
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public boolean delete(@PathVariable("id") int id){
+        return costumeService.delete(id);
     }
     
     @PutMapping("/update")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @ResponseStatus(HttpStatus.CREATED)
     public Costume update(@RequestBody Costume p){
         return costumeService.update(p);
     }

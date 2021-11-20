@@ -38,8 +38,13 @@ public class AdminService {
         }
     }
     
-    public void delete(int id){
-        adminRepository.delete(id);
+    public boolean delete(int id){
+        Optional<Admin> c = getAdmin(id);
+        if(!c.isEmpty()){
+            adminRepository.delete(id);
+            return true;
+        }
+        return false;
     }
     
     public Admin update(Admin c){
