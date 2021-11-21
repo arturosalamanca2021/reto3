@@ -18,14 +18,28 @@ public class ScoreService {
     @Autowired
     private ScoreRepository scoreRepository;
     
+    /**
+     * Obtener todos los registros de la tabla score
+     * @return 
+     */
     public List<Score> getAll(){
         return scoreRepository.getAll();
     }
     
+    /**
+     * obtener un registro de la tabla score filtrado por el campo Id
+     * @param id
+     * @return 
+     */
     public Optional<Score> getScore(int id){
         return scoreRepository.getScore(id);
     }
     
+    /**
+     * Permite almacenar el registro nuevo en la tabla score
+     * @param c
+     * @return 
+     */
     public Score save(Score c){
         /*if(c.getId() == null){
             return scoreRepository.save(c);
@@ -40,10 +54,11 @@ public class ScoreService {
         return c;
     }
     
-    public Score update(Score c){
-        return scoreRepository.save(c);
-    }
-    
+    /**
+     * Elimina un registro de la tabla score de acuerdo a su id
+     * @param id - id del registro 
+     * @return  
+     */
     public boolean delete(int id){
         Optional<Score> c = getScore(id);
         if(!c.isEmpty()){

@@ -17,14 +17,28 @@ public class CostumeService {
     @Autowired
     private CostumeRepository costumeRepository;
     
+    /**
+    * Obtener todos los registros de la tabla costume
+    * @return 
+    */
     public List<Costume> getAll(){
         return costumeRepository.getAll();
     }
     
+    /**
+     * obtener un registro de la tabla costume filtrado por el campo Id
+     * @param id
+     * @return 
+     */
     public Optional<Costume> getCostume(int id){
         return costumeRepository.getCostume(id);
     }
     
+    /**
+    * Permite almacenar el registro nuevo en la tabla costume
+    * @param c
+    * @return 
+    */
     public Costume save(Costume c){
         if(c.getId() == 0){
             return costumeRepository.save(c);
@@ -38,12 +52,22 @@ public class CostumeService {
         }
     }
     
+    /**
+     * Actualiza el registro y asigna id de relación con category
+     * @param c
+     * @return 
+     */
     public Costume update(Costume c){
         Optional<Costume> caux = costumeRepository.getCostume(c.getId());
         c.setCategory(caux.get().getCategory());
         return costumeRepository.save(c);
     }
     
+    /**
+     * Elimina un registro de la tabla costume de acuerdo a su id
+     * @param id - id del registro 
+     * @return  
+     */
     public boolean delete(int id){
         Optional<Costume> c = getCostume(id);
         if(!c.isEmpty()){

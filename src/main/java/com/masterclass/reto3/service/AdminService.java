@@ -17,14 +17,28 @@ public class AdminService {
     @Autowired
     private AdminRepository adminRepository;
     
+    /**
+    * Obtener todos los registros de la tabla admin
+    * @return 
+    */
     public List<Admin> getAll(){
         return adminRepository.getAll();
     }
     
+    /**
+     * obtener un registro de la tabla admin filtrado por el campo Id
+     * @param id
+     * @return 
+     */
     public Optional<Admin> getAdmin(int id){
         return adminRepository.getAdmin(id);
     }
     
+    /**
+    * Permite almacenar el registro nuevo en la tabla admin
+    * @param c
+    * @return 
+    */
     public Admin save(Admin c){
         if(c.getId() == 0){
             return adminRepository.save(c);
@@ -38,6 +52,11 @@ public class AdminService {
         }
     }
     
+    /**
+     * Elimina un registro de la tabla admin de acuerdo a su id
+     * @param id - id del registro 
+     * @return  
+     */
     public boolean delete(int id){
         Optional<Admin> c = getAdmin(id);
         if(!c.isEmpty()){
@@ -47,7 +66,4 @@ public class AdminService {
         return false;
     }
     
-    public Admin update(Admin c){
-        return adminRepository.save(c);
-    }
 }

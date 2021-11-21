@@ -17,14 +17,28 @@ public class MessageService {
     @Autowired
     private MessageRepository messageRepository;
     
+     /**
+     * Obtener todos los registros de la tabla message
+     * @return 
+     */
     public List<Message> getAll(){
         return messageRepository.getAll();
     }
     
+    /**
+    * obtener un registro de la tabla message filtrado por el campo Id
+    * @param id
+    * @return 
+    */
     public Optional<Message> getMessage(int id){
         return messageRepository.getMessage(id);
     }
     
+    /**
+     * Permite almacenar el registro nuevo en la tabla message
+     * @param c
+     * @return 
+     */
     public Message save(Message c){
         if(c.getIdMessage() == 0){
             return messageRepository.save(c);
@@ -38,10 +52,11 @@ public class MessageService {
         }
     }
     
-    public Message update(Message c){
-        return messageRepository.save(c);
-    }
-    
+    /**
+     * Elimina un registro de la tabla message de acuerdo a su id
+     * @param id - id del registro 
+     * @return  
+     */
     public boolean delete(int id){
         Optional<Message> c = getMessage(id);
         if(!c.isEmpty()){

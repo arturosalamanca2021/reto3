@@ -17,14 +17,28 @@ public class CategoryService {
     @Autowired
     private CategoryRepository categoryRepository;
     
+    /**
+    * Obtener todos los registros de la tabla category
+    * @return 
+    */
     public List<Category> getAll(){
         return categoryRepository.getAll();
     }
     
+    /**
+     * obtener un registro de la tabla category filtrado por el campo Id
+     * @param id
+     * @return 
+     */
     public Optional<Category> getCategory(int id){
         return categoryRepository.getCategory(id);
     }
     
+    /**
+    * Permite almacenar el registro nuevo en la tabla category
+    * @param c
+    * @return 
+    */
     public Category save(Category c){
         if(c.getId() == 0){
             return categoryRepository.save(c);
@@ -38,10 +52,11 @@ public class CategoryService {
         }
     }
     
-    public Category update(Category c){
-        return categoryRepository.save(c);
-    }
-    
+    /**
+     * Elimina un registro de la tabla category de acuerdo a su id
+     * @param id - id del registro 
+     * @return  
+     */
     public boolean delete(int id){
         Optional<Category> c = getCategory(id);
         if(!c.isEmpty()){

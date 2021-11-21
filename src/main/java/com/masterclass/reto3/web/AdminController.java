@@ -53,6 +53,6 @@ public class AdminController {
     @PutMapping("/update")
     @ResponseStatus(HttpStatus.CREATED)
     public Admin update(@RequestBody Admin p){
-        return adminService.update(p);
+        return adminService.save(p);
     }
 }
