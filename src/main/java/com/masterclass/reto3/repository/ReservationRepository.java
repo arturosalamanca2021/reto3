@@ -47,8 +47,6 @@ public class ReservationRepository {
         List<CountClients> res = new ArrayList<>();
         List<Object[]> report = reservationCrudRepository.findClientMostValued();
         for (int i = 0; i < report.size(); i++) {
-            System.out.println("0 --> " + report.get(i)[0]);
-            System.out.println("1 --> " + report.get(i)[1]);
             res.add(new CountClients((long) report.get(i)[1], (Client) report.get(i)[0] ));
         }
         return res;
